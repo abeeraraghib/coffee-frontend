@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coffee Cart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #f9eccc;
+    }
+
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      margin: 10px 5px 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 16px;
+      background-color: #c59c6c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a87a50;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li.item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li button {
+      background-color: #ff6666;
+      padding: 6px 12px;
+      font-size: 0.9em;
+    }
+
+    li button:hover {
+      background-color: #e04a4a;
+    }
+
+    .controls {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Coffee Cart</h1>
+
+    <div class="controls">
+      <input type="text" id="itemInput" placeholder="Enter coffee name">
+      <button onclick="addItem()">Add to Cart</button>
+      <button onclick="clearCart()">Clear Cart</button>
+    </div>
+
+    <div id="cart">
+      <h2>Cart Items:</h2>
+      <ul id="cartItems"></ul>
+    </div>
+  </div>
+
+  <script>
+    const sessionId = 'user123';
+    const baseURL = 'http://localhost:8000';
+
+    async function fetchCart() {
+      const res = await fetch(`${baseURL}/cart/${sessionId}`);
+      const data = await res.json();
+      const list = document.getElementById("cartItems");
+      list.innerHTML = "";
+      data.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "item";
+        li.innerHTML = `${item} <button onclick="removeItem('${item}')">Remove</button>`;
+        list.appendChild(li);
+      });
+    }
+
+    async function addItem() {
+      const item = document.getElementById("itemInput").value.trim();
+      if (!item) return;
+      await fetch(`${baseURL}/cart/${sessionId}/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ item_name: item })
+      });
+      document.getElementById("itemInput").value = "";
+      fetchCart();
+    }
+
+    async function removeItem(item) {
+      await fetch(`${baseURL}/cart/${sessionId}/remove`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ item_name: item })
+      });
+      fetchCart();
+    }
+
+    async function clearCart() {
+      await fetch(`${baseURL}/cart/${sessionId}/clear`, {
+        method: "POST"
+      });
+      fetchCart();
+    }
+
+    fetchCart();
+  </script>
+</body>
+</html>

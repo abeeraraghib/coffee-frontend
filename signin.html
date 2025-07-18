@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign In / Login</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://www.allrecipes.com/thmb/2hi8SOwUkV1JPehRbVPh8neuu1w=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/How-to-Grind-Coffee-Without-a-Grinder-3x2-1-cb7169c257894b75a485ff898d34740b.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+  background-color: rgba(196, 164, 132, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-image: url('https://st3.depositphotos.com/7978858/34219/v/450/depositphotos_342192130-stock-illustration-coffee-beans-illustration-coffee-emblem.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto 15px;
+      border: 2px solid #6f4e37;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #4b2e1e;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #6f4e37;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #593926;
+    }
+
+    .toggle-link {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #4b2e1e;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Sign Up Form -->
+    <div id="signupForm">
+      <div class="logo-circle"></div>
+      <h2>Create Account</h2>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button>Sign Up</button>
+      <div class="toggle-link" onclick="toggleForm()">Already have an account?</div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="hidden">
+      <div class="logo-circle"></div>
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button>Login</button>
+      <div class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm() {
+      document.getElementById('signupForm').classList.toggle('hidden');
+      document.getElementById('loginForm').classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Sphere - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://coffeeza.in/cdn/shop/articles/Coffee_Beans_Blog_3888x.jpg?v=1670838724') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 80px);
+      flex-direction: column;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .main-content h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .main-content p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px #000;
+    }
+
+    .main-content button {
+      background-color: #ff5e5e;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .main-content button:hover {
+      background-color: #e14c4c;
+    }
+
+    @media (max-width: 768px) {
+      .main-content h1 {
+        font-size: 2em;
+      }
+
+      .main-content p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><i class="fas fa-mug-hot"></i> Brew Sphere</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Order</a>
+      <a href="signin.html">Sign In</a>
+      <a href="community.html">Community</a>
+      <a href="chatbot.html">ChatBot</a>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <h1>Best coffee for your taste</h1>
+    <p>Discover the art of coffee and cherish moments that linger like the perfect brew.</p>
+    <button onclick="window.location.href='explore.html'">Explore More</button>
+  </div>
+
+</body>
+</html>
